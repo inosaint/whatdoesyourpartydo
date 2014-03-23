@@ -1,5 +1,5 @@
 			body{
-				background: transparent;
+				background: #ddd;
 				text-align: center;
 				font-family: Helvetica,Arial,sans-serif;
 			}
@@ -14,7 +14,7 @@
 
 			section{
 				padding-top: 100px;
-				min-height:300px;
+				min-height:200px;
 			}
 
 			h1{
@@ -41,16 +41,17 @@
 			}
 			
 			.btn-outline-inverse{
-				color: #fff;
 				background-color: transparent;
-				border-color: #fff;
+				border-color: #ccc;
 				margin-bottom:2em;
+				border: 1px solid #ccc;
+				padding: 10px;
 			}
 		
 			.btn-outline-inverse:hover{
-				color: #fcfcfc;
+				border: 1px solid #ccc;
 				background-color: transparent;
-				border-color: #fcfcfc;
+				border-color: #ccc;
 			}
 			
 			ul{
@@ -64,6 +65,13 @@
 			li{
 				padding-left:10px;
 			}
+
+			#reveal{
+
+			padding: 10px;
+			border: 1px solid #ccc;
+			}			
+
 			
 /*.reveal{
 
@@ -95,3 +103,21 @@
 .alt:hover{
 	display:inline;
 }	*/
+
+#alt{
+	display:none;
+	color:#666;
+  text-shadow: 0 1px 0 #000;
+}
+
+
+#aim:hover > #alt{
+	display:inline;
+	color: #666;
+	line-height:;
+	border: 1px dashed #666;
+	text-shadow: 0 -1px O #000;
+	font-weight: bold;
+    background: #aaa;
+	padding: 0 10px;
+}
