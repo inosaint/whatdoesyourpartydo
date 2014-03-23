@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<!-- not the prettiest codebase -->
+
+	<meta charset="utf-8">
+	<meta property="og:site_name" content="What does your party do?"/>
+	<meta property="og:title" content="What does your party do?"/>
+
+	<title>What does your party do?</title>
+
+
+	<!-- <meta property="og:description" content="Ever felt the need to vent your frustrations related to the UI/UX process? Well we did and decided to build a little something that could help you do so."/>
+	<meta name="description" content="Ever felt the need to vent your frustrations related to the UI/UX process? Well we did and decided to build a little something that could help you do so." />
+	<meta property="og:image" content="./img/WorstUX.png">
+	<link rel="image_src" href="./img/WorstUX.png" />
+	<meta property="og:url" content="http://worstuserexperience.com">
+  <link href=./img/favicon.png rel="shortcut icon" /> -->
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script src="js/tabletop.js"></script>
+
+
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<!-- <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/redmond/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/redmond/jquery-ui.css"> -->
+
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" media='all'>
+
+	
+</head>
+<body class="container">
+
+
+ <script type="text/javascript">
+	var partyjson = new Array();
+	var res,res2,res3;
+	var number;
+	
+
+				/**
+				 * Returns a random integer between min and max
+				 * Using Math.round() will give you a non-uniform distribution!
+				 */
+				function getRandomInt (min, max) {
+				    return Math.floor(Math.random() * (max - min + 1)) + min;
+				};
+
+
+				//function called once tabletop.js completes spreadsheet load
+    				function getPartyInfo(data) {
+
+    				//jquery function which will make a json out of the spreadsheet data
+    	      			$.each(data.Sheet1.elements, function(key, data) {
+    	        		 var party_data = { 'party' : data.party , 'aim':data.aim, 'source': data.source}
+
+            			 partyjson.push(party_data);
+    	         		});
+
+    	      			shuffle();
+
+    	      		
+
+    	      //console.log("Statejson L", statejson.length);
+    	      //console.log("Statejson", statejson[0].reason);
+    	      
+    	      
+				};
+
+				function shuffle(){
+
+
+						var next = getRandomInt (0, partyjson.length - 1);
+						//console.log(next);
+						while(next == number){
+							next = getRandomInt (0, partyjson.length - 1);
+						}
+						number = next;
+
+						res = partyjson[number].party;
+						res2 = partyjson[number].aim;// set limits
+						res3 = partyjson[number].source;
+    	      document.getElementById('aim').textContent = res2; 
+    	      document.getElementById('party').textContent = res;
+						document.getElementById('source').href=""+res3;
+				    	        /*if(res2 != null)
+				    	        document.getElementById('link').href="http://twitter.com/"+res2;
+				    	        total = partyjson.length;*/
+
+						//document.getElementById('total').textContent = total;
+    	      //console.log(number);
+    	       //console.log(res2);
+    	       
+    	      };
+
+
+
+    	      $( ".alt" ).show();
+ 
+						$(document).ready(function(){
+
+					        Tabletop.init( {
+					        	key: "0Ap2hoxVM_haNdHhkdXprYzZWUHZKcUlIaVd1VzJGMlE",  //link that is part of the published sheet url      
+					        	callback: getPartyInfo,        
+					        	simpleSheet: false 
+					        } );
+
+
+                   
+    });
+
+        
+        
+
+ </script>
+
+
+	<section class="row">
+ 	
+ 	
+ 		<div class="head" >&#8220<span id='aim'></span>&#8221</div>
+ 		<div>	<span class='reveal'>Reveal Party</span>
+ 					<span class='alt'><a href="" id='source'>
+ 						<span id='party'></span></a>
+ 					</span>
+ 		</div>
+
+ 	</section>
+
+	<footer>
+		<a class="btn btn-outline-inverse btn-lg" onclick="shuffle()">One more please</a>
+		<ul>
+			
+			<li>Built by <a href="http://twitter.com/kenneth" target="_blank">kenneth</a> and inspired by <a href="http://whatdoesyourstartupdo.co/" target="_blank">What does your startup do?</a></a></li>
+
+		</ul>
+
+	</footer>
+
+
+
+</body>
+
+
+</html>
