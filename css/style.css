@@ -102,7 +102,19 @@
 
 .alt:hover{
 	display:inline;
-}	*/
+}	
+
+----
+
+#aim{
+	font: 16px Arial, sans-serif;
+	font-weight:normal;
+	position:absolute;
+	z-index:1000;
+
+
+}
+
 
 #alt{
 	display:none;
@@ -121,3 +133,7 @@
     background: #aaa;
 	padding: 0 10px;
 }
+
+
+*/
+
